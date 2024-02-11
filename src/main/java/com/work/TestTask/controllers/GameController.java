@@ -17,13 +17,15 @@ public class GameController {
     // создает новую игру
     @PostMapping("/new")
     public Game newGame(@RequestBody GameRequest.NewGame request) throws InvalidRequestException {
-        if (request.getWidth() >= 2 && request.getWidth() <= 30 &&
-                request.getHeight() >= 2 && request.getHeight() <= 30 && request.getMines_count() >= 1 &&
-                request.getMines_count() <= request.getWidth() * request.getHeight() - 1) {
-            return service.createGame(request);
-        } else {
-            throw new InvalidRequestException("Количество мин должно быть не менее 1 и не более " + (request.getWidth() * request.getHeight() - 1));
+        if (!(request.getWidth() >= 2 && request.getWidth() <= 30 &&
+                request.getHeight() >= 2 && request.getHeight() <= 30)) {
+            throw new InvalidRequestException("Ширина поля должна быть не менее 2 и не более 30");
         }
+        if (!(request.getMines_count() >= 1 && request.getMines_count() <= request.getWidth() * request.getHeight() - 1)) {
+            throw new InvalidRequestException("Количество мин должно быть не менее 1 и не более " +
+                    (request.getWidth() * request.getHeight() - 1));
+        }
+        return service.createGame(request);
     }
 
     // меняет созданную ранее игру в соотвествии с ходом пользователя
