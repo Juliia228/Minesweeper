@@ -4,7 +4,7 @@
 **Спецификация** по [ссылке](https://minesweeper-test.studiotg.ru/swagger/#).
 
 Сервер реализован с помощью `Java, Spring Boot, lombok`.
-Исходный код находится [тут](https://github.com/Juliia228/Minesweeper/tree/main/src/main/java/com/work/TestTask). В проект добавлено юнит-тестирование: [в файле](https://github.com/Juliia228/Minesweeper/blob/main/src/test/java/com/work/TestTask/TestTaskApplicationTests.java). 
+Исходный код находится [тут](https://github.com/Juliia228/Minesweeper/tree/main/src/main/java/com/work/TestTask). В проект добавлено юнит-тестирование: [в папке](https://github.com/Juliia228/Minesweeper/blob/main/src/test/java/com/work/TestTask). 
 Запуск сервера происходит из файла [TestTaskApplication.java](https://github.com/Juliia228/Minesweeper/blob/f41e8a083ce9b2cd463c1550ce9519f532226812/src/main/java/com/work/TestTask/TestTaskApplication.java), в методе main. Сервер запускается локально, порт `8080`.
 
 ### Демоверсия: 
