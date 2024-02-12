@@ -7,7 +7,7 @@ import java.util.UUID;
 // данные http запросов
 @Data
 public class GameRequest {
-    // для запроса /new
+    // для запроса к /new
     @Data
     public static class NewGame {
         private int width;
@@ -27,7 +27,7 @@ public class GameRequest {
         }
     }
 
-    // для запроса /turn
+    // для запроса к /turn
     @Data
     public static class Turn {
         private UUID game_id;
