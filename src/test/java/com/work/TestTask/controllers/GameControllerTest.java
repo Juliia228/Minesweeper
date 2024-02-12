@@ -19,6 +19,21 @@ class GameControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    void testNew_CORS() throws Exception {
+        mockMvc.perform(post("/new")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                  "width": 10,
+                                  "height": 10,
+                                  "mines_count": 10
+                                }
+                                """))
+                .andExpectAll(status().isOk(), header().string("Vary", "Origin"),
+                        content().contentType(MediaType.APPLICATION_JSON));
+    }
+
+    @Test
     void testNew_ValidResponse() throws Exception {
         String result = mockMvc.perform(post("/new")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -41,21 +56,6 @@ class GameControllerTest {
                 "mines_count\":10",
                 "field\":[[",
                 "completed");
-    }
-
-    @Test
-    void testNew_CORS() throws Exception {
-        mockMvc.perform(post("/new")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("""
-                                {
-                                  "width": 10,
-                                  "height": 10,
-                                  "mines_count": 10
-                                }
-                                """))
-                .andExpectAll(status().isOk(), header().string("Vary", "Origin"),
-                        content().contentType(MediaType.APPLICATION_JSON));
     }
 
     @Test
